@@ -1,11 +1,12 @@
 import { atom } from 'recoil';
-import { FirebaseApp } from 'firebase/app';
+import { User } from 'firebase/auth';
 
-type AuthState = FirebaseApp | null;
+type AuthState = User | null;
 
 const authState = atom<AuthState>({
   key: 'authState',
   default: null,
+  // Avoid TypeError: Cannot freeze
   dangerouslyAllowMutability: true,
 });
 
